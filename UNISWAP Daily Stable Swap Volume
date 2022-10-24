@@ -1,0 +1,9 @@
+SELECT  project,                        
+        date_trunc('day', block_time) as day,
+        SUM(usd_amount) as volume_daily                                                                              
+FROM dex."trades"
+WHERE (project = 'Uniswap')
+AND token_a_symbol IN ('USDC', 'USDT', 'DAI', 'MIM', 'UST', 'FRAX', 'LUSD', 'GUSD', 'HUSD', 'mUSD', 'PAX', 'USDP', 'TUSD', 'sUSD', 'ALUSD', 'OUSD', 'DOLA', 'DUSD')
+AND token_b_symbol IN ('USDC', 'USDT', 'DAI', 'MIM', 'UST', 'FRAX', 'LUSD', 'GUSD', 'HUSD', 'mUSD', 'PAX', 'USDP', 'TUSD', 'sUSD', 'ALUSD', 'OUSD', 'DOLA', 'DUSD')
+
+GROUP BY 1, 2
